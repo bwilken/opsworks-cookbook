@@ -11,9 +11,8 @@ node[:deploy].each do |app_name, deploy|
       :db_password => (deploy[:db_password][:database] rescue nil),
       :db_name =>       (deploy[:db_name][:database] rescue nil)
     })
+    action :create
 
-   only_if do
-     File.directory?("#{deploy[:deploy_to]}/current/application/config/")
-   end
+   
   end
 end
